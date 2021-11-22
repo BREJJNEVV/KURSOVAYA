@@ -18,51 +18,100 @@ namespace KURSOVAYA
         {
             InitializeComponent();
         }
+        public void Rim(int a)
+        {
+            string rim;
+            int t = a;
+            int ost;
+            for (int i = 0; a>0; i++)
+            {
+                ost = a % 10;
+                a = a / 10;
+                rim = Rim_chisl(a);
+            }
+        }
+        public string Rim_chisl(int a)
+        {
+            string str;
+            if (a == 1)
+            {
+                str = "|";
+            }
+            else if (a == 2)
+                str = "||";
+            return str;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (param1 == param2)
-            {
-                MessageBox.Show("Ты выбрал одинаковые системы счисления");
-            }
-            else if (param1 == 1)  //2
+
+            try
             {
                 int i = Convert.ToInt32(textBox1.Text);
-                label2.Text = textBox1.Text;
-                if (param2 == 2)
+                string dv = Convert.ToString(i, 2);
+                if (param1 == param2)
                 {
-                    label4.Text = Convert.ToString(i, 10);
+                    MessageBox.Show("Ты выбрал одинаковые системы счисления");
                 }
-                else if (param2 == 3)
+                else if (param1 == 1)  //2
                 {
-                    label4.Text = Convert.ToString(i, 16);
+                    label2.Text = textBox1.Text;
+                    if (param2 == 2)
+                    {
+                        label4.Text = Convert.ToString(i, 10);
+                    }
+                    else if (param2 == 3)
+                    {
+                        label4.Text = Convert.ToString(i, 16);
+                    }
+                    else if (param2 == 4)
+                    {
+
+                    }
                 }
-                else if (param2 == 4)
+                else if (param1 == 2)   //10
+                {
+                    label2.Text = textBox1.Text;
+                    if (param2 == 1)
+                    {
+                        label4.Text = Convert.ToString(i, 2);
+                    }
+                    else if (param2 == 3)
+                    {
+                        label4.Text = Convert.ToString(i, 16);
+                    }
+                    else if (param2 == 4)
+                    {
+
+                    }
+                }
+                else if (param1 == 3)   //16
                 {
 
+                    label2.Text = textBox1.Text;
+                    if (param2 == 1)
+                    {
+                        label4.Text = Convert.ToString(i, 2);
+                    }
+                    else if (param2 == 2)
+                    {
+                        label4.Text = Convert.ToString(i, 10);
+                    }
+                    else if (param2 == 4)
+                    {
+
+                    }
                 }
             }
-            else if (param1 == 2)   //10
+            catch
             {
-                int i = Convert.ToInt32(textBox1.Text);
-                label2.Text = textBox1 + "";
-                if (param2 == 1)
-                {
-                    label4.Text = Convert.ToString(i, 2);
-                }
-                else if (param2 == 3)
-                {
-                    label4.Text = Convert.ToString(i, 16);
-                }
-                else if (param2 == 4)
-                {
-
-                }
+                MessageBox.Show("Введите число");
             }
 
         }
 
         
+
         
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -92,6 +141,11 @@ namespace KURSOVAYA
         private void radioButton7_CheckedChanged(object sender, EventArgs e)
         {
             param2 = 4;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
